@@ -1,0 +1,31 @@
+# SwiftLint configuration for DocSnap.
+# Install locally with `brew install swiftlint`, then run `swiftlint` from the repo root.
+# Xcode integration: add a "Run Script" build phase with `swiftlint` (see SwiftLint docs).
+
+excluded:
+  - Pods
+  - DerivedData
+  - .build
+
+disabled_rules:
+  - todo
+  - line_length
+
+opt_in_rules:
+  - empty_count
+  - closure_spacing
+  - contains_over_first_not_nil
+  - fatal_error_message
+  - force_unwrapping
+  - unused_import
+
+force_cast: warning
+force_try: warning
+
+identifier_name:
+  min_length:
+    warning: 2
+  excluded:
+    - id
+    - x
+    - y
