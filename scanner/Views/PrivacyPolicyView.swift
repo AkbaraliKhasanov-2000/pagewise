@@ -36,7 +36,7 @@ struct PrivacyPolicyView: View {
 		),
 		Section(
 			title: "Contact",
-			body: "Questions about this policy can be sent to support@pagewise.app."
+			body: "Questions about this policy can be sent to hello@uishelf.com."
 		)
 	]
 
