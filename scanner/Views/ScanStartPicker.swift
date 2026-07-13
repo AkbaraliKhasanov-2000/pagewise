@@ -1,6 +1,6 @@
 //
 //  ScanStartPicker.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
@@ -8,7 +8,9 @@ import SwiftUI
 struct ScanStartPicker: View {
 
 	var body: some View {
-		Button { switchView(.Page) } label: {
+		Button {
+			switchView(.Page)
+		} label: {
 			Image(systemName: "plus.viewfinder")
 				.symbolRenderingMode(.palette)
 				.foregroundStyle(Color.primary, Color.highlight)

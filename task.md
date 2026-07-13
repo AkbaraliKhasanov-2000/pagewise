@@ -190,7 +190,7 @@ Build (`BUILD SUCCEEDED`) va barcha 4 doimiy unit test barcha tuzatishlardan key
 
 > Foydalanuvchi Xcode'da build qilishga urinib, `ScannerWidgetExtension` uchun "No Account for Team '74TAWHT4L6'" xatosini oldi.
 
-- [x] ✅ **TUZATILDI** — Asosiy app target avvalroq foydalanuvchining haqiqiy jamoa ID'siga (`Q8F8S8H543`) o'tkazilgan ekan, lekin widget extension va ikkala test target (Debug+Release, jami 6 ta konfiguratsiya) hamon original repo egasining eski jamoa ID'siga (`74TAWHT4L6`) bog'langan qolib ketgan edi — bu nomuvofiqlik xatoga sabab bo'lgan. Barcha 8 ta konfiguratsiya `Q8F8S8H543`ga tekislandi ([project.pbxproj](openscanner.xcodeproj/project.pbxproj)).
+- [x] ✅ **TUZATILDI** — Asosiy app target avvalroq foydalanuvchining haqiqiy jamoa ID'siga (`Q8F8S8H543`) o'tkazilgan ekan, lekin widget extension va ikkala test target (Debug+Release, jami 6 ta konfiguratsiya) hamon original repo egasining eski jamoa ID'siga (`74TAWHT4L6`) bog'langan qolib ketgan edi — bu nomuvofiqlik xatoga sabab bo'lgan. Barcha 8 ta konfiguratsiya `Q8F8S8H543`ga tekislandi ([project.pbxproj](docsnap.xcodeproj/project.pbxproj)).
 
 ### 7.6. Eski ilovadan (Open Scanner / Pencil Research) qolgan izlarni tozalash (2026-07-11)
 
@@ -201,7 +201,65 @@ Build (`BUILD SUCCEEDED`) va barcha 4 doimiy unit test barcha tuzatishlardan key
 - [x] ✅ **README.md**dan "bu loyiha Open Scanner'ning forki, Pencil Research tomonidan..." jumlasi olib tashlandi (shunchaki "MIT litsenziyasi ostida — LICENSE fayliga qarang" bilan almashtirildi).
 - [x] ✅ **Git remote** (`origin → github.com/pencilresearch/OpenScanner.git`) olib tashlandi — hech qachon push qilinmagan, faqat mahalliy konfiguratsiya edi.
 - [x] 🚫 **O'ZGARTIRILMAYDI (litsenziya talabi)** — [LICENSE](LICENSE) fayldagi `Copyright (c) 2024 Pencil Research` bildirishnomasi **qasddan qoldirildi**. MIT litsenziyasi buni talab qiladi: dasturiy ta'minotning istalgan nusxasida original mualliflik huquqi bildirishnomasi saqlanishi SHART, aks holda original kodni ishlatish huquqiy jihatdan noqonuniy bo'lib qoladi. Bu yagona chekli joy — "hech qanday iz qolmasligi" talabining bitta haqiqiy istisnosi.
-- [ ] ⏳ **Foydalanuvchidan tasdiq kutilmoqda** — ikkita kattaroq, xavfliroq operatsiya hali bajarilmadi (pastga qarang): (1) `openscanner.xcodeproj` loyiha faylining o'zini va ichki PBXProject nomini qayta nomlash, (2) git commit tarixini (barcha 7 ta original commit hali ham "Open Scanner" davridan) yangi, toza tarix bilan almashtirish.
+- [x] ✅ **TUZATILDI (foydalanuvchi tasdiqlagach)** — `openscanner.xcodeproj` → **`docsnap.xcodeproj`**ga qayta nomlandi (`git mv` orqali, tarix saqlangan holda); ichki `PBXProject "openscanner"` nomi va scheme faylidagi barcha `container:openscanner.xcodeproj` havolalari `docsnap.xcodeproj`ga yangilandi. Xcode avval yopilib, qayta nomlash amalga oshirilib, so'ng `xcodebuild -project docsnap.xcodeproj` orqali build+test muvaffaqiyatli tasdiqlandi, keyin loyiha qayta ochildi.
+- [x] ✅ **TUZATILDI (foydalanuvchi tasdiqlagach)** — Git commit tarixi **butunlay yangilandi**: original 7 ta "Open Scanner" davridagi commit (`676a0b7`dan `6336c2c`gacha) `git checkout --orphan` orqali o'chirilib, butun joriy holat (barcha DocSnap o'zgarishlari, jami 60 fayl) bitta yangi ildiz commit — **"Initial commit: DocSnap"** — sifatida saqlandi. Bu xavfsiz edi: hech qachon hech qayerga push qilinmagan (git remote ham allaqachon olib tashlangan edi), faqat mahalliy tarix edi. Build va barcha 4 test yangi tarix ustida ham muvaffaqiyatli tasdiqlandi.
+
+**Yakuniy holat**: endi repoda "Open Scanner"/"Pencil Research"ga ishora qiluvchi yagona joy — [LICENSE](LICENSE) fayldagi mualliflik huquqi bildirishnomasi (yuqorida tushuntirilganidek, MIT litsenziyasi buni talab qiladi, olib tashlab bo'lmaydi). Boshqa hamma joyda — kod, fayl nomlari, git tarixi, git remote, Xcode loyiha nomi — endi butunlay DocSnap'ga tegishli.
+
+---
+
+## 8. PAWALL / OBUNA TIZIMI (2026-07-11)
+
+> Foydalanuvchi: "Men buni App Storega chiqarib ichiga pawall qo'shmoqchiman." Narx: **$24.99/oy** (foydalanuvchi tanlovi — App Store Connect'da bemalol o'zgartirilishi mumkin, kodga qattiq yozilmagan). ⚠️ **Tuzatish (2026-07-11)**: dastlab "3 ta bepul skan, keyin obuna" modeli amalga oshirilgan edi, lekin foydalanuvchi buni aniq rad etdi — **"Men senga bepul yo'q dedim"**. To'g'rilandi: **bepul qatlam umuman yo'q** — obuna bo'lmasa birinchi skandan boshlab paywall talab qilinadi.
+
+- [x] ✅ **[StoreManager.swift](scanner/StoreManager.swift)** — StoreKit 2 asosidagi obuna menejeri: mahsulotni yuklaydi (`Product.products(for:)`), xarid qiladi, `Transaction.currentEntitlements` orqali obuna holatini tekshiradi (o'z serversiz, to'g'ridan-to'g'ri Apple manbasidan — yangilanish/bekor qilish/restore'larda avtomatik to'g'ri bo'ladi), tranzaksiya yangilanishlarini tinglaydi (`Transaction.updates`), "Restore Purchases" funksiyasi bilan. `AppState.shared.store` orqali butun ilova bu yagona instansga kiradi.
+- [x] ✅ **[PaywallView.swift](scanner/Views/PaywallView.swift)** — yangi obuna ekrani: DocSnap Pro afzalliklari ro'yxati (cheksiz hujjat, filtrlar/imzo, teglar/qidiruv, iCloud sinxronizatsiya), narx StoreKit orqali dinamik ko'rsatiladi, "Subscribe"/"Restore Purchases" tugmalari, xato holatlari uchun alert.
+- [x] ✅ **Cheklov mantig'i** — `AppState.canCreateNewScan` endi sodda: **faqat `store.isSubscribed`** (bepul son cheklovi olib tashlandi). Uchta kirish nuqtasi ham tekshiriladi: (1) asosiy "+" skan tugmasi ([ScanStartPicker.swift](scanner/Views/ScanStartPicker.swift)), (2) fotosurat/PDF import menyusi ([HomeView.swift](scanner/Views/HomeView.swift)), (3) Siri Shortcut orqali "Scan a document" chaqiruvi (bu yo'l avval **paywall'ni butunlay chetlab o'tar edi** — tuzatildi). **Muhim**: mavjud (allaqachon yaratilgan yoki avval, masalan obuna tugagandan keyin qolgan) skanlar cheklovdan mustasno — faqat YANGI skan yaratish cheklanadi, eski hujjatlarga kirish hech qachon to'silmaydi.
+- [x] ⚠️ **TUZATISH (2026-07-12) — cheklov nuqtasi butunlay ko'chirildi**: foydalanuvchi aniqladi — "Paywall hozir qanday ishlaydi" savoliga javoban men skanerlashni cheklaganimni tushuntirdim, lekin foydalanuvchi darhol tuzatdi: **"Men Paywall tayyor dokumentni share qilishda yoki yuklab olmoqchi bo'lganda chiqsin dedim"**. Skanerlash/import cheklovi **butunlay olib tashlandi** (`ScanStartPicker`, `HomeView` import menyusi, Siri Shortcut — barchasi endi cheklovsiz, to'g'ridan-to'g'ri ishlaydi). Buning o'rniga `AppState.isPro` (avvalgi `canCreateNewScan`ning o'rnini bosdi) endi faqat **[LiveScanSummary.swift](scanner/Views/LiveScanSummary.swift)dagi ulashish/eksport funksiyalarida** tekshiriladi: `sharePdf()` (PDF eksport), `shareText()` (matn eksport), `shareItem(item:)` (alohida tanilgan element ulashish). Obuna bo'lmasa, ulashish/eksport o'rniga paywall ochiladi. `PaywallView`ning afzalliklar ro'yxati va matni ham shunga mos yangilandi (endi "cheksiz skan" emas, balki "PDF sifatida eksport", "istalgan joyga ulashish", "matn sifatida eksport" haqida).
+- [x] ✅ **[AboutView.swift](scanner/Views/AboutView.swift)**ga "Upgrade to Pro" qatori qo'shildi (obuna faol bo'lmasa) — istalgan vaqt paywall'ni ochish imkoni. Obuna faol bo'lsa, o'rniga "DocSnap Pro is active" ko'rsatiladi.
+- [x] ✅ **Mahalliy StoreKit test konfiguratsiyasi** ([Products.storekit](scanner/Products.storekit)) — Xcode scheme'ga ulandi (Test va Launch action'lar). Bu haqiqiy App Store Connect'da mahsulot yaratmasdan turib, Xcode orqali (▶ Run tugmasi bilan) simulyatorda **to'liq xarid oqimini sinab ko'rish imkonini beradi** — narx ($24.99/oy) va xarid muvaffaqiyatli yakunlanishi (haqiqiy to'lovsiz, sandbox rejimida) shu konfiguratsiyadan keladi.
+- Vizual tekshiruv: paywall ekrani mavjud iPhone 17 Pro simulyatorida vaqtinchalik majburiy ko'rsatish orqali tasdiqlandi (joylashuv, matnlar, tugmalar to'g'ri ko'rinadi). **Muhim cheklov**: `xcrun simctl launch` orqali ishga tushirish Xcode scheme'ning StoreKit konfiguratsiyasini ulamaydi (faqat Xcode'ning o'zi ▶ orqali ishga tushirganda yoki `xcodebuild test` orqali ulanadi) — shuning uchun narx yuklanishi va haqiqiy xarid oqimini **CLI orqali to'liq tasdiqlab bo'lmadi**. **Sizdan so'ralgan keyingi qadam**: Xcode'da ▶ (Run) tugmasini bosib, simulyatorda 3 ta hujjat skan qiling (yoki mavjud bo'lsa import qiling), 4-chi safar paywall chiqishini, narx to'g'ri ($24.99/oy) ko'rinishini va "Subscribe" tugmasi sandbox xaridni muvaffaqiyatli yakunlashini tekshiring.
+
+**App Store'ga chiqarish uchun sizning o'zingiz bajarishingiz kerak bo'lgan qadamlar** (men bajarolmayman — hisobingiz va to'lov ma'lumotlaringiz kerak):
+- [ ] Apple Developer Program a'zoligi (agar hali yo'q bo'lsa, $99/yil).
+- [ ] App Store Connect'da mahsulot yaratish: **Auto-Renewable Subscription**, Product ID **aynan** `com.akbaralikhasanov.pagewise.pro.monthly` (kodga mos kelishi shart — 9-bo'limga qarang, nom Pagewise'ga o'zgargan), obuna guruhi yarating, narxni belgilang (masalan $24.99, yoki xohlagan narxingiz).
+- [ ] Ilova metama'lumotlari: tavsif, screenshot'lar, yosh chegarasi, eksport muvofiqligi (shifrlash haqida deklaratsiya — bu ilovada maxsus shifrlash yo'q, oddiy javob yetarli).
+- [ ] Haqiqiy maxfiylik siyosati sahifasini ilova ichida allaqachon mavjud ([PrivacyPolicyView.swift](scanner/Views/PrivacyPolicyView.swift)) — tashqi domen/sahifa endi shart emas, chunki havola butunlay olib tashlanib, sheet bilan almashtirildi (10-bo'limga qarang).
+- [ ] Ko'rib chiqishga (App Review) yuborish.
+
+---
+
+## 9. NOM O'ZGARISHI: DocSnap → Pagewise (2026-07-13)
+
+> Foydalanuvchi "DocSnap" nomi ilovani "mukammal ifodalashi" kerakligini aytdi va bir nechta variant taklif qilingandan so'ng **"Pagewise"** nomini tanladi (variant tanlash: "Page" — hujjat sahifasi, "wise" — OCR/matnni aqlli tanib olishga ishora).
+
+- [x] ✅ Butun kod bazasi bo'ylab qidirilib, `docsnap`/`DocSnap` ning barcha uchrashlari topildi va `pagewise`/`Pagewise`ga almashtirildi:
+  - Bundle identifikatorlari: `com.akbaralikhasanov.docsnap` → **`com.akbaralikhasanov.pagewise`** ([pagewise.xcodeproj/project.pbxproj](pagewise.xcodeproj/project.pbxproj) — asosiy target, widget, testlar, UI testlar — barcha 8 build konfiguratsiyasida).
+  - App Group: `group.com.akbaralikhasanov.docsnap` → **`group.com.akbaralikhasanov.pagewise`** ([scanner.entitlements](scanner/scanner.entitlements), [ScannerWidget.entitlements](ScannerWidget/ScannerWidget.entitlements), [Persistence.swift](scanner/Data/Persistence.swift)).
+  - iCloud konteyner: `iCloud.com.akbaralikhasanov.docsnap` → **`iCloud.com.akbaralikhasanov.pagewise`** (ikkala entitlements faylida).
+  - StoreKit mahsulot ID: `com.akbaralikhasanov.docsnap.pro.monthly` → **`com.akbaralikhasanov.pagewise.pro.monthly`** ([StoreManager.swift](scanner/StoreManager.swift), [Products.storekit](scanner/Products.storekit) — shu jumladan `displayName`/`referenceName`/obuna guruhi nomi "Pagewise Pro").
+  - `INFOPLIST_KEY_CFBundleDisplayName` (ilova nomi ekranda) — barcha 4 konfiguratsiyada `Pagewise`.
+  - Barcha Swift fayl sarlavhalari (`//  DocSnap` → `//  Pagewise`), `AppIntents.swift`dagi Siri Shortcut matnlari, `AboutView`/`PaywallView`/`PrivacyPolicyView`/`HomeView`/`AppState`dagi foydalanuvchiga ko'rinadigan matnlar, `ScannerWidget.swift`dagi widget nomi va URL sxemasi (`docsnap://` → `pagewise://`).
+  - `README.md` va `CODE_OF_CONDUCT.md` — to'liq qayta yozildi (shu jumladan support email `support@pagewise.app`).
+- [x] ✅ **Xcode loyiha fayli qayta nomlandi**: `docsnap.xcodeproj` → **`pagewise.xcodeproj`** (`git mv` orqali, tarixi saqlangan holda) — ichki `PBXProject "pagewise"` izohi va scheme faylidagi 5 ta `ReferencedContainer` havolasi ham yangilandi. `Products.storekit`ga nisbiy havola o'zgarishsiz qoldi (yo'l nomi loyiha nomiga bog'liq emas edi).
+- [x] ✅ [AboutView.swift](scanner/Views/AboutView.swift)dagi logo belgisi matni `"DOC"` → `"PW"`ga o'zgartirildi (Pagewise'ning bosh harflari).
+- **Eslatma**: `task.md`dagi 1–8-bo'limlar (tarixiy yozuvlar) ataylab **o'zgartirilmadi** — ular "DocSnap" nomi ostida qabul qilingan qarorlarning haqiqiy tarixiy hujjati, faqat hali bajarilmagan (App Store Connect uchun) TODO band(lar)i yangi identifikatorlarga mos yangilandi (yuqorida, 8-bo'lim oxirida).
+- Build va barcha 4 test (`xcodebuild test`) yangi loyiha fayli va identifikatorlar ustida muvaffaqiyatli tasdiqlandi. Simulyatorda o'rnatib, About ekranida yangi nom/logo real ko'rib tekshirildi.
+
+## 10. MAXFIYLIK SIYOSATI — ILOVA ICHIDA SHEET (2026-07-13)
+
+> Foydalanuvchi: "Hozir qara privacy policy kabi tashqi linkda ular app ichida sheet bo'lsin. Umuman tashqi link bo'lmasin."
+
+- [x] ✅ Yangi [PrivacyPolicyView.swift](scanner/Views/PrivacyPolicyView.swift) — ilova ichida ochiladigan sheet, haqiqiy siyosat matni bilan (ma'lumotlar qayerda saqlanadi, iCloud/CloudKit sinxronizatsiya, on-device Vision OCR, StoreKit obunalar, tracking/analytics yo'qligi, contact email).
+- [x] ✅ [AboutView.swift](scanner/Views/AboutView.swift)dagi `Link("Privacy Policy", destination: URL(...))` (Safari'ga chiqaradigan tashqi havola) butunlay olib tashlandi, o'rniga `Button` + `.sheet` bilan almashtirildi.
+- [x] ✅ Butun kod bazasi tekshirilib, boshqa hech qanday tashqi veb-link topilmadi (faqat "Need help?" qatoridagi `mailto:` havolasi bor edi — bu keyinchalik foydalanuvchi so'roviga ko'ra butunlay olib tashlandi, quyiga qarang).
+- [x] ✅ **"Need help?" qatori butunlay olib tashlandi** ([AboutView.swift](scanner/Views/AboutView.swift)) — foydalanuvchi so'radi, mailto havolasi va unga bog'liq `supportBody` konstantasi ham o'chirildi.
+
+## 11. LOGO QAYTA DIZAYNI (2026-07-13)
+
+> Foydalanuvchi eski logoni ("Open Scanner"dan meros qolgan, faqat nomi `AppLogoBadge`ga o'zgartirilgan komponent) ko'rib, "bu eski appdan emasmi?" deb so'radi — javob **ha**: dizayn (ikkita aylanuvchi viewfinder-qavs) eskisining o'zi edi, faqat fayl/struct nomi o'zgargan edi.
+
+- [x] ✅ [AppLogoBadge.swift](scanner/Buttons/AppLogoBadge.swift) **butunlay qayta yozildi** — foydalanuvchi "yangi mustaqil dizayn" variantini tanladi. Endi: ko'k→amber (`Color.accent`→`Color.highlight`) gradient fon, o'ng yuqori burchakda burmalangan qog'oz (folded corner) shakli, markazda monogram matn, fade+scale kirish animatsiyasi (eskisining aylanuvchi-qavslar animatsiyasi o'rniga). SF Symbol "viewfinder" ishlatilmaydi endi.
 
 ---
 

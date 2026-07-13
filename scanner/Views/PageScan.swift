@@ -1,6 +1,6 @@
 //
 //  PageScan.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI

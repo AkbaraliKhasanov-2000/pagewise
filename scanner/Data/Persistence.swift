@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  DocSnap
+//  Pagewise
 //
 
 import CoreData
@@ -29,7 +29,7 @@ struct PersistenceController {
 			description.url = URL(fileURLWithPath: "/dev/null")
 			description.cloudKitContainerOptions = nil
 		} else if let sharedStoreURL = FileManager.default
-			.containerURL(forSecurityApplicationGroupIdentifier: "group.com.akbaralikhasanov.docsnap")?
+			.containerURL(forSecurityApplicationGroupIdentifier: "group.com.akbaralikhasanov.pagewise")?
 			.appendingPathComponent("scanner.sqlite") {
 			// Store inside the shared App Group container (not just the app's own
 			// sandbox) so the widget extension can read the same data directly,

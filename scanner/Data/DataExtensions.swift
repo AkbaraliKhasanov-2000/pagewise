@@ -1,6 +1,6 @@
 //
 //  DataExtensions.swift
-//  DocSnap
+//  Pagewise
 //
 
 import Foundation

@@ -27,9 +27,9 @@ struct ClassicScanWidget: Widget {
 		IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider(context: PersistenceController.shared.container.viewContext)) { entry in
 			ScannerWidgetEntryView(entry: entry)
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
-				.widgetURL(URL(string: "docsnap://scan/classic"))
+				.widgetURL(URL(string: "pagewise://scan/classic"))
 		}
-		.configurationDisplayName("DocSnap")
+		.configurationDisplayName("Pagewise")
 		.description("See your scan count and jump straight to a new scan.")
 		.supportedFamilies([.systemSmall, .accessoryCircular])
 	}

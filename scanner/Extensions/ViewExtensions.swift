@@ -1,6 +1,6 @@
 //
 //  ViewExtensions.swift
-//  DocSnap
+//  Pagewise
 //
 
 import Foundation
@@ -15,7 +15,7 @@ import os
 
 extension Logger {
 	/// Single shared logger for the app — visible in Console.app under this subsystem/category.
-	static let app = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.akbaralikhasanov.docsnap", category: "app")
+	static let app = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.akbaralikhasanov.pagewise", category: "app")
 }
 
 enum Haptics {

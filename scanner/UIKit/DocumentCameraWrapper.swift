@@ -1,6 +1,6 @@
 //
 //  DocumentCameraWrapper.swift
-//  DocSnap
+//  Pagewise
 //
 
 import Foundation

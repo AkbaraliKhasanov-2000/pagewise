@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
@@ -74,6 +74,7 @@ struct HomeView: View {
 	var selectedScan: Binding<Scan?>? = nil
 
 	@State private var selectedPhotoItems: [PhotosPickerItem] = []
+	@State private var showingPhotosPicker = false
 	@State private var showingPDFImporter = false
 	@State private var showingAbout = false
 
@@ -106,7 +107,7 @@ struct HomeView: View {
 				} label: {
 					Image(systemName: "info.circle")
 				}
-				.accessibilityLabel("About DocSnap")
+				.accessibilityLabel("About Pagewise")
 			}
 
 			ToolbarItem(placement: .navigationBarTrailing) {
@@ -155,7 +156,9 @@ struct HomeView: View {
 
 			ToolbarItem(placement: .navigationBarTrailing) {
 				Menu {
-					PhotosPicker(selection: $selectedPhotoItems, matching: .images) {
+					Button {
+						showingPhotosPicker = true
+					} label: {
 						Label("Import Photos", systemImage: "photo.on.rectangle")
 					}
 					Button {
@@ -172,9 +175,9 @@ struct HomeView: View {
 		.background(Color.appBackground)
 		.ignoresSafeArea(edges: .bottom)
 		.onChange(of: navigationManager.requestedClassicScan) { newValue in
-			if newValue {
-				AppState.shared.viewState = .Page
-			}
+			guard newValue else { return }
+			navigationManager.requestedClassicScan = false
+			AppState.shared.viewState = .Page
 		}
 		.onChange(of: searchText) { _ in
 			updateSearchPredicate()
@@ -192,6 +195,7 @@ struct HomeView: View {
 			guard !newItems.isEmpty else { return }
 			importPhotos(newItems)
 		}
+		.photosPicker(isPresented: $showingPhotosPicker, selection: $selectedPhotoItems, matching: .images)
 		.fileImporter(isPresented: $showingPDFImporter, allowedContentTypes: [.pdf]) { result in
 			importPDF(result)
 		}

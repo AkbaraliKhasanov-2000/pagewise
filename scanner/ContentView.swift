@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
@@ -25,6 +25,9 @@ struct ContentView: View {
 		}
 		.onAppear {
 			ScannerShortcuts.updateAppShortcutParameters()
+		}
+		.sheet(isPresented: $loading.showingPaywall) {
+			PaywallView(store: loading.store)
 		}
 	}
 

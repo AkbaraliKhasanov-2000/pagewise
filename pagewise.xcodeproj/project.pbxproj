@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23777A717630863E404BAD3F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 55BF9CE5ED40B4BB3CB595B0 /* PrivacyInfo.xcprivacy */; };
 		A30A91D1288A3AB800D8228B /* DataScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30A91D0288A3AB800D8228B /* DataScannerViewController.swift */; };
 		A30A91D5288DB6CA00D8228B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30A91D4288DB6CA00D8228B /* AppState.swift */; };
 		A30E5C8E288A2FF40099985F /* scannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30E5C8D288A2FF40099985F /* scannerApp.swift */; };
@@ -23,6 +24,8 @@
 		A30FC73F289248C300C75CFB /* LiveCaptureSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FC73E289248C300C75CFB /* LiveCaptureSummary.swift */; };
 		A30FC7412893496400C75CFB /* DocumentCameraWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FC7402893496400C75CFB /* DocumentCameraWrapper.swift */; };
 		A30FC74C28949B9500C75CFB /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FC74B28949B9500C75CFB /* AboutView.swift */; };
+		E28924860E31E0A58B5D179B /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380704E6DFEB26798C9F77D /* PaywallView.swift */; };
+		256B7FA82B3D6785776B3E89 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18884CF7B37ED559433641 /* PrivacyPolicyView.swift */; };
 		A30FC74E2894F6D500C75CFB /* ZoomableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FC74D2894F6D500C75CFB /* ZoomableScrollView.swift */; };
 		A30FC7522895A22700C75CFB /* QuickLookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FC7512895A22700C75CFB /* QuickLookController.swift */; };
 		A3134DAA28B57477001A3EF3 /* RecognizedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3134DA928B57477001A3EF3 /* RecognizedItemView.swift */; };
@@ -43,6 +46,8 @@
 		A3233D4E28BC95030088268F /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325C2D1288F75C800E83CF6 /* ViewExtensions.swift */; };
 		A3233D4F28BEE12C0088268F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30E5C96288A2FF50099985F /* Assets.xcassets */; };
 		A325C2C9288B8E9600E83CF6 /* AppLogoBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325C2C8288B8E9600E83CF6 /* AppLogoBadge.swift */; };
+		06A8190908D89D5FFD7F3055 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5967B5AD6A9726EC07203BE /* StoreManager.swift */; };
+		5EFA811D50EF086A01D66378 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5967B5AD6A9726EC07203BE /* StoreManager.swift */; };
 		A325C2D0288F0F0200E83CF6 /* PageScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325C2CF288F0F0200E83CF6 /* PageScan.swift */; };
 		A325C2D2288F75C800E83CF6 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325C2D1288F75C800E83CF6 /* ViewExtensions.swift */; };
 		A3A4F88C289DE36300986816 /* SmallGlyphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A4F88B289DE36300986816 /* SmallGlyphButton.swift */; };
@@ -114,6 +119,8 @@
 		A30FC73E289248C300C75CFB /* LiveCaptureSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCaptureSummary.swift; sourceTree = "<group>"; };
 		A30FC7402893496400C75CFB /* DocumentCameraWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraWrapper.swift; sourceTree = "<group>"; };
 		A30FC74B28949B9500C75CFB /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		B380704E6DFEB26798C9F77D /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		FE18884CF7B37ED559433641 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		A30FC74D2894F6D500C75CFB /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
 		A30FC7512895A22700C75CFB /* QuickLookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookController.swift; sourceTree = "<group>"; };
 		A3134DA928B57477001A3EF3 /* RecognizedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedItemView.swift; sourceTree = "<group>"; };
@@ -128,7 +135,10 @@
 		A3233D4628BC4C830088268F /* TimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProvider.swift; sourceTree = "<group>"; };
 		A3233D4928BC4ECC0088268F /* TimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntry.swift; sourceTree = "<group>"; };
 		A325C2C8288B8E9600E83CF6 /* AppLogoBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoBadge.swift; sourceTree = "<group>"; };
+		A5967B5AD6A9726EC07203BE /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		50237206CF98E06A7FDA7F1D /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		A325C2CC288DCAEF00E83CF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		55BF9CE5ED40B4BB3CB595B0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A325C2CF288F0F0200E83CF6 /* PageScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageScan.swift; sourceTree = "<group>"; };
 		A325C2D1288F75C800E83CF6 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		A3A4F88B289DE36300986816 /* SmallGlyphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallGlyphButton.swift; sourceTree = "<group>"; };
@@ -203,9 +213,12 @@
 				A30E5C94288A2FF40099985F /* ContentView.swift */,
 				A3B9F72F28AF007300EEDDFF /* AppIntents.swift */,
 				A30A91D4288DB6CA00D8228B /* AppState.swift */,
+				A5967B5AD6A9726EC07203BE /* StoreManager.swift */,
+				50237206CF98E06A7FDA7F1D /* Products.storekit */,
 				A3B9F73128AF021000EEDDFF /* NavigationManager.swift */,
 				A30E5C96288A2FF50099985F /* Assets.xcassets */,
 				A325C2CC288DCAEF00E83CF6 /* Info.plist */,
+				55BF9CE5ED40B4BB3CB595B0 /* PrivacyInfo.xcprivacy */,
 				A30E5C98288A2FF50099985F /* scanner.entitlements */,
 				A3B56FD92C99F2CF00EF29FE /* Views */,
 				A30FC7462894799300C75CFB /* Buttons */,
@@ -291,6 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				A30FC74B28949B9500C75CFB /* AboutView.swift */,
+				B380704E6DFEB26798C9F77D /* PaywallView.swift */,
+				FE18884CF7B37ED559433641 /* PrivacyPolicyView.swift */,
 				A3DE6DD8289C303D00A7E740 /* HomeView.swift */,
 				A30FC73E289248C300C75CFB /* LiveCaptureSummary.swift */,
 				A30FC73A2892033000C75CFB /* LiveScanSummary.swift */,
@@ -422,7 +437,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A30E5C85288A2FF40099985F /* Build configuration list for PBXProject "docsnap" */;
+			buildConfigurationList = A30E5C85288A2FF40099985F /* Build configuration list for PBXProject "pagewise" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -452,6 +467,7 @@
 			files = (
 				A30E5C9B288A2FF50099985F /* Preview Assets.xcassets in Resources */,
 				A30E5C97288A2FF50099985F /* Assets.xcassets in Resources */,
+				23777A717630863E404BAD3F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +505,8 @@
 				A30FC7522895A22700C75CFB /* QuickLookController.swift in Sources */,
 				A3134DAA28B57477001A3EF3 /* RecognizedItemView.swift in Sources */,
 				A30FC74C28949B9500C75CFB /* AboutView.swift in Sources */,
+				E28924860E31E0A58B5D179B /* PaywallView.swift in Sources */,
+				256B7FA82B3D6785776B3E89 /* PrivacyPolicyView.swift in Sources */,
 				A3B9F73028AF007300EEDDFF /* AppIntents.swift in Sources */,
 				A30FC73F289248C300C75CFB /* LiveCaptureSummary.swift in Sources */,
 				A30A91D5288DB6CA00D8228B /* AppState.swift in Sources */,
@@ -499,6 +517,7 @@
 				A30A91D1288A3AB800D8228B /* DataScannerViewController.swift in Sources */,
 				A3233D3C28BC49B70088268F /* ScannerWidget.intentdefinition in Sources */,
 				A325C2C9288B8E9600E83CF6 /* AppLogoBadge.swift in Sources */,
+				06A8190908D89D5FFD7F3055 /* StoreManager.swift in Sources */,
 				A3A4F88C289DE36300986816 /* SmallGlyphButton.swift in Sources */,
 				A30FC7412893496400C75CFB /* DocumentCameraWrapper.swift in Sources */,
 				A30E5C93288A2FF40099985F /* scanner.xcdatamodeld in Sources */,
@@ -538,6 +557,7 @@
 				A3233D4C28BC50960088268F /* DataExtensions.swift in Sources */,
 				A3233D3628BC49B60088268F /* ScannerWidget.swift in Sources */,
 				A3233D4D28BC94CB0088268F /* AppState.swift in Sources */,
+				5EFA811D50EF086A01D66378 /* StoreManager.swift in Sources */,
 				A3233D3B28BC49B70088268F /* ScannerWidget.intentdefinition in Sources */,
 				A3233D4B28BC50930088268F /* Persistence.swift in Sources */,
 				A3233D4A28BC4ECC0088268F /* TimelineEntry.swift in Sources */,
@@ -693,7 +713,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = scanner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DocSnap;
+				INFOPLIST_KEY_CFBundleDisplayName = Pagewise;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use your camera for scanning.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location will be added to your scans for your reference only. The app will work fine without this permission.";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -705,7 +725,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
@@ -732,7 +752,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = scanner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DocSnap;
+				INFOPLIST_KEY_CFBundleDisplayName = Pagewise;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use your camera for scanning.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location will be added to your scans for your reference only. The app will work fine without this permission.";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -744,7 +764,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
@@ -768,7 +788,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap.scannerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise.scannerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -791,7 +811,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap.scannerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise.scannerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -813,7 +833,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap.scannerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise.scannerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -835,7 +855,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap.scannerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise.scannerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -858,7 +878,7 @@
 				DEVELOPMENT_TEAM = Q8F8S8H543;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScannerWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DocSnap;
+				INFOPLIST_KEY_CFBundleDisplayName = Pagewise;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -866,8 +886,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap.widget;
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -889,7 +909,7 @@
 				DEVELOPMENT_TEAM = Q8F8S8H543;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScannerWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DocSnap;
+				INFOPLIST_KEY_CFBundleDisplayName = Pagewise;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -897,8 +917,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.docsnap.widget;
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akbaralikhasanov.pagewise.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -912,7 +932,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A30E5C85288A2FF40099985F /* Build configuration list for PBXProject "docsnap" */ = {
+		A30E5C85288A2FF40099985F /* Build configuration list for PBXProject "pagewise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A30E5CB2288A2FF50099985F /* Debug */,

@@ -1,10 +1,13 @@
 //
 //  AppLogoBadge.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
 
+/// Pagewise's mark: a rounded badge with a folded-corner page cut into one
+/// corner, over a blue-to-amber brand gradient. Pops in with a fade + scale
+/// rather than sliding shapes in from off-screen.
 struct AppLogoBadge: View {
 
 	@State var caption: String = ""
@@ -14,78 +17,56 @@ struct AppLogoBadge: View {
 	var outline: Bool = true
 	@Binding var justAppeared: Bool
 
-	var height: CGFloat
-	{
+	var height: CGFloat {
 		if exactHeight > 0 {
 			return exactHeight
 		} else {
-
 			switch size {
-			case .small:
-				return 60
-			case .medium:
-				return 100
-			case .large:
-				return 140
-			default:
-				return 100
+			case .small: return 60
+			case .medium: return 100
+			case .large: return 140
+			default: return 100
 			}
 		}
 	}
 
 	var body: some View {
+		GeometryReader { geometry in
+			let side = min(geometry.size.width, geometry.size.height)
+			let foldSize = side * 0.32
+			let cornerRadius = side * 0.22
 
-		return GeometryReader { geometry in
+			ZStack(alignment: .topTrailing) {
+				LinearGradient(
+					colors: [Color.accent, Color.highlight],
+					startPoint: .topLeading,
+					endPoint: .bottomTrailing
+				)
 
-			ZStack {
-				Color.clear
-
-				if geometry.size.width >= geometry.size.height {
-					Text(caption)
-						.font(.system(size: geometry.size.height * 0.25, weight: .bold, design: .rounded))
-						.foregroundColor(.primary)
-					if image != "" {
-						Image(systemName: image)
-							.resizable()
-							.scaledToFit()
-							.padding(24)
-							.foregroundColor(.white)
-					}
+				// Folded page corner, cut into the top-trailing edge.
+				Path { path in
+					path.move(to: CGPoint(x: side - foldSize, y: 0))
+					path.addLine(to: CGPoint(x: side, y: 0))
+					path.addLine(to: CGPoint(x: side, y: foldSize))
+					path.closeSubpath()
 				}
-			}
-			.overlay {
-				ZStack {
-					HStack {
-						Image(systemName: "viewfinder")
-							.resizable()
-							.scaledToFill()
-							.foregroundColor(Color.highlight)
-							.frame(width: geometry.size.height / 2, alignment: .leading)
-							.clipped()
+				.fill(Color.black.opacity(0.16))
 
-						Spacer()
-
-					}
-					HStack {
-						Spacer()
-
-						Image(systemName: "viewfinder")
-							.resizable()
-							.scaledToFill()
-							.foregroundColor(Color.highlight)
-							.frame(width: geometry.size.height / 2, alignment: .trailing)
-							.clipped()
-					}
-				}
-				.padding(.horizontal, justAppeared ? -30 : 0)
-				.padding(geometry.size.height * 0.1)
-				.rotationEffect(Angle(degrees: justAppeared ? 145 : 0))
+				Text(caption)
+					.font(.system(size: side * 0.3, weight: .bold, design: .rounded))
+					.foregroundColor(.white)
+					.frame(width: geometry.size.width, height: geometry.size.height)
 			}
 			.frame(width: geometry.size.width, height: geometry.size.height)
-			.clipShape(RoundedRectangle(cornerRadius: geometry.size.height * 0.2))
-			.overlay(RoundedRectangle(cornerRadius: geometry.size.height * 0.2).stroke(Color.primary, lineWidth: outline ? 1 : 0))
+			.clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+			.overlay(
+				RoundedRectangle(cornerRadius: cornerRadius)
+					.stroke(Color.primary.opacity(0.15), lineWidth: outline ? 1 : 0)
+			)
+			.scaleEffect(justAppeared ? 0.7 : 1)
+			.opacity(justAppeared ? 0 : 1)
 		}
 		.frame(height: height)
-		.animation(.bouncy(duration: 0.5).delay(0.5), value: justAppeared)
+		.animation(.bouncy(duration: 0.5).delay(0.15), value: justAppeared)
 	}
 }

@@ -1,6 +1,6 @@
 //
 //  ScannerViewController.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI

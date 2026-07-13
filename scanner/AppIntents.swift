@@ -1,6 +1,6 @@
 //
 //  AppIntents.swift
-//  DocSnap
+//  Pagewise
 //
 
 import Foundation
@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClassicScanIntent: AppIntent {
 	static var title: LocalizedStringResource = "Scan Document"
-	static var description = IntentDescription("Scan a document with DocSnap")
+	static var description = IntentDescription("Scan a document with Pagewise")
 	static var openAppWhenRun: Bool = true
 
 	@MainActor
@@ -20,14 +20,14 @@ struct ClassicScanIntent: AppIntent {
 }
 
 struct OpenAppIntent: AppIntent {
-	static var title: LocalizedStringResource = "Open DocSnap"
-	static var description = IntentDescription("Run the DocSnap app")
+	static var title: LocalizedStringResource = "Open Pagewise"
+	static var description = IntentDescription("Run the Pagewise app")
 	static var openAppWhenRun: Bool = true
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
 		NavigationManager.shared.openApp()
-		return .result(dialog: "Okay, starting DocSnap.")
+		return .result(dialog: "Okay, starting Pagewise.")
 	}
 }
 

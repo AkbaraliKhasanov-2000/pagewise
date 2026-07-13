@@ -1,25 +1,26 @@
 //
 //  AboutView.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
 
 struct AboutView: View {
 
+	@ObservedObject var store = AppState.shared.store
 	@State var justAppeared = true
-
-	static let supportBody: String = "%0A%0A%0A----------%0APlease%20write%20your%20message%20above%20this%20section."
+	@State private var showingPaywall = false
+	@State private var showingPrivacyPolicy = false
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 20) {
 
 			HStack(spacing: 14) {
-				AppLogoBadge(caption: "DOC", exactHeight: 64, justAppeared: $justAppeared)
+				AppLogoBadge(caption: "PW", exactHeight: 64, justAppeared: $justAppeared)
 					.frame(width: 64, height: 64)
 
 				VStack(alignment: .leading, spacing: 2) {
-					Text("DocSnap")
+					Text("Pagewise")
 						.font(.system(.title2, design: .rounded, weight: .bold))
 					Text("Point, scan, done.")
 						.font(.subheadline)
@@ -28,12 +29,19 @@ struct AboutView: View {
 			}
 
 			VStack(alignment: .leading, spacing: 12) {
-				aboutRow(icon: "questionmark.bubble.fill", title: "Need help?") {
-					UIApplication.shared.open(
-						URL(string: "mailto:support@docsnap.app?subject=DocSnap%20support%20request&body=\(AboutView.supportBody)")!,
-						options: [:],
-						completionHandler: nil
-					)
+				if store.isSubscribed {
+					HStack {
+						Image(systemName: "checkmark.seal.fill")
+							.foregroundStyle(Color.accent)
+							.frame(width: 22)
+						Text("Pagewise Pro is active")
+							.foregroundStyle(Color.primary)
+						Spacer()
+					}
+				} else {
+					aboutRow(icon: "sparkles", title: "Upgrade to Pro") {
+						showingPaywall = true
+					}
 				}
 			}
 			.cardStyle(cornerRadius: 14, padding: 14)
@@ -41,7 +49,9 @@ struct AboutView: View {
 			HStack(spacing: 0) {
 				Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "•.•") (\(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "•"))")
 				Text(" · ")
-				Link("Privacy Policy", destination: URL(string: "https://docsnap.app/#privacy")!)
+				Button("Privacy Policy") {
+					showingPrivacyPolicy = true
+				}
 			}
 			.font(.footnote)
 			.foregroundStyle(.secondary)
@@ -50,6 +60,12 @@ struct AboutView: View {
 			withAnimation(.easeOut(duration: 0.5)) {
 				justAppeared = false
 			}
+		}
+		.sheet(isPresented: $showingPaywall) {
+			PaywallView(store: store)
+		}
+		.sheet(isPresented: $showingPrivacyPolicy) {
+			PrivacyPolicyView()
 		}
 	}
 

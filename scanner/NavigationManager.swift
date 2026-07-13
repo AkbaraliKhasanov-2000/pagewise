@@ -1,6 +1,6 @@
 //
 //  NavigationManager.swift
-//  DocSnap
+//  Pagewise
 //
 
 import Foundation

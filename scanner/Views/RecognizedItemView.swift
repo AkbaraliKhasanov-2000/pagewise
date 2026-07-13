@@ -1,6 +1,6 @@
 //
 //  RecognizedItemView.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI

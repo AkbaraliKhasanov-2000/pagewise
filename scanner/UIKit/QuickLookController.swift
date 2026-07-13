@@ -1,6 +1,6 @@
 //
 //  QuickLookController.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI

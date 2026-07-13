@@ -1,6 +1,6 @@
 //
 //  LiveScanSummary.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
@@ -257,6 +257,7 @@ struct LiveScanSummary: View {
 	}
 	
 	func shareItem(item: ScanRecognizedItem) {
+		guard requirePro() else { return }
 		if let url = item.textUrl {
 			let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
 			UIApplication.shared.rootViewControllerForPresenting?.present(activityVC, animated: true, completion: nil)
@@ -410,17 +411,28 @@ struct LiveScanSummary: View {
 	}
 	
 	func sharePdf() {
+		guard requirePro() else { return }
 		if let url = scan.pdfDocumentFile() {
 			let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
 			UIApplication.shared.rootViewControllerForPresenting?.present(activityVC, animated: true, completion: nil)
 		}
 	}
-	
+
 	func shareText() {
+		guard requirePro() else { return }
 		if let url = scan.textDocument {
 			let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
 			UIApplication.shared.rootViewControllerForPresenting?.present(activityVC, animated: true, completion: nil)
 		}
+	}
+
+	/// Gate for the share/export actions — scanning stays free, but getting
+	/// a finished document out (PDF, text, or a single recognized item)
+	/// requires an active subscription.
+	private func requirePro() -> Bool {
+		if AppState.shared.isPro { return true }
+		AppState.shared.showingPaywall = true
+		return false
 	}
 	
 	func shareMarkdown() {

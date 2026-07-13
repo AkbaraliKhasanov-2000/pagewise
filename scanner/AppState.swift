@@ -1,6 +1,6 @@
 //
 //  AppState.swift
-//  DocSnap
+//  Pagewise
 //
 
 import Foundation
@@ -25,39 +25,50 @@ extension ViewState: AppEnum {
 	static var caseDisplayRepresentations: [ViewState: DisplayRepresentation] = [
 		.Home: "Scan List",
 		.Page: "Scan Now",
-		.About: "About DocSnap",
+		.About: "About Pagewise",
 	]
 }
 
 class AppState: ObservableObject {
-	
+
 	public static let shared = AppState()
 	var locationManager = LocationManager()
-	
+	let store = StoreManager()
+
 	@Published var viewState = ViewState.Home {
 		didSet {
 			stopSpeaking()
 		}
 	}
-	
+
 	@AppStorage("lastReviewPrompt") private var lastReviewPrompt: Date = Date().addingTimeInterval(TimeInterval(-365*24*60*60))
 
 	@Published var openScan: Scan?
 	@Published var openRecognizedItem: ScanRecognizedItem?
-	
+	@Published var showingPaywall = false
+
 	private let speechSynthesizer = AVSpeechSynthesizer()
-	
-	var lastScanIndex: Int {
-		
+
+	/// Scanning itself is always free. Sharing or exporting a finished
+	/// document (PDF, text, or an individual recognized item) requires an
+	/// active Pro subscription — see the `share*` functions in
+	/// `LiveScanSummary` for where this is checked.
+	var isPro: Bool {
+		store.isSubscribed
+	}
+
+	var totalScanCount: Int {
 		let request = Scan.fetchRequest()
 		do {
-			let scans = try PersistenceController.shared.container.viewContext.fetch(request)
-			return scans.count - 1
+			return try PersistenceController.shared.container.viewContext.fetch(request).count
 		} catch {
 			Logger.app.error("Failed to fetch scan count: \(error, privacy: .public)")
+			return 0
 		}
-		
-		return 0
+	}
+
+	var lastScanIndex: Int {
+		totalScanCount - 1
 	}
 	
 	func speak(text: String?) {

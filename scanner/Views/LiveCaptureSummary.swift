@@ -1,6 +1,6 @@
 //
 //  LiveCaptureSummary.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI

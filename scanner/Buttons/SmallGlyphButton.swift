@@ -1,6 +1,6 @@
 //
 //  SmallGlyphButton.swift
-//  DocSnap
+//  Pagewise
 //
 
 import SwiftUI
