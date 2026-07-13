@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagewise Support</title>
+<style>
+  :root {
+    --bg: #f6f8fc;
+    --surface: #ffffff;
+    --border: #e1e7f0;
+    --text: #12172b;
+    --text-muted: #5b6479;
+    --accent: #2563eb;
+    --accent-soft: #e8eefd;
+    --highlight: #f59e0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --surface: #161b25;
+      --border: #26304a;
+      --text: #eef1f8;
+      --text-muted: #9aa3ba;
+      --accent: #5b8dff;
+      --accent-soft: #1b2540;
+      --highlight: #fbbf24;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 64px 24px 96px;
+    line-height: 1.55;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--highlight));
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .mark::after {
+    content: "";
+    position: absolute;
+    top: 9px; left: 9px; right: 13px; bottom: 9px;
+    background: var(--surface);
+    border-radius: 4px;
+    clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 0 100%);
+  }
+
+  h1 {
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0 0 6px;
+  }
+
+  .tagline {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin: 0 0 48px;
+  }
+
+  h2.section-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 16px;
+  }
+
+  .faq {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 56px;
+  }
+
+  .faq-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--highlight);
+    padding: 18px 20px;
+  }
+  .faq-item:first-child { border-radius: 10px 10px 0 0; }
+  .faq-item:last-child { border-radius: 0 0 10px 10px; }
+  .faq-item + .faq-item { border-top: none; }
+
+  .faq-item h3 {
+    font-size: 15.5px;
+    margin: 0 0 6px;
+  }
+
+  .faq-item p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .contact {
+    background: var(--accent-soft);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: left;
+  }
+
+  .contact h2 {
+    font-size: 17px;
+    margin: 0 0 6px;
+  }
+
+  .contact p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+  }
+
+  .contact a.email {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 999px;
+  }
+
+  footer {
+    margin-top: 56px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="mark" aria-hidden="true"></div>
+  <h1>Pagewise Support</h1>
+  <p class="tagline">Answers to common questions about the document scanner &amp; OCR app for iPhone.</p>
+
+  <h2 class="section-label">Frequently asked</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>How do I scan a document?</h3>
+      <p>Tap the scan button on the Documents screen and point your camera at a page. Pagewise detects the edges automatically and captures a corrected, cropped image.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is scanning free?</h3>
+      <p>Yes. Capturing, tagging, favoriting, and browsing your documents is free with no limit. Pagewise Pro is only required to export or share a finished document as a PDF or text file.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Where is my data stored?</h3>
+      <p>On your device, and in your own iCloud account if you're signed in. Pagewise does not run its own servers and never receives your documents.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I cancel my subscription?</h3>
+      <p>Open the Settings app, tap your name, then Subscriptions, and select Pagewise Pro to cancel. Changes take effect at the end of the current billing period.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I restore a purchase on a new device?</h3>
+      <p>Open Pagewise, go to About, tap Upgrade to Pro, then Restore Purchases.</p>
+    </div>
+  </div>
+
+  <div class="contact">
+    <h2>Still need help?</h2>
+    <p>Write to us and we'll get back to you as soon as we can.</p>
+    <a class="email" href="mailto:hello@uishelf.com">hello@uishelf.com</a>
+  </div>
+
+  <footer>Pagewise &middot; Point, scan, done.</footer>
+</div>
+</body>
+</html>
