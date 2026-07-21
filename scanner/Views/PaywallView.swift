@@ -96,6 +96,12 @@ struct PaywallView: View {
 						.foregroundStyle(.tertiary)
 						.multilineTextAlignment(.center)
 						.padding(.horizontal, 40)
+
+					HStack(spacing: 16) {
+						Link("Privacy Policy", destination: URL(string: "https://akbaralikhasanov.github.io/pagewise/privacy.html")!)
+						Link("Terms of Use", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+					}
+					.font(.caption2)
 				}
 				.padding(.bottom, 24)
 			}
