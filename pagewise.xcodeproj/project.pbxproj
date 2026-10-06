@@ -714,6 +714,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = scanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Scanmuse;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use your camera for scanning.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location will be added to your scans for your reference only. The app will work fine without this permission.";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -753,6 +754,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = scanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Scanmuse;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use your camera for scanning.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location will be added to your scans for your reference only. The app will work fine without this permission.";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;

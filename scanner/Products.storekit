@@ -83,6 +83,31 @@
           "referenceName" : "Scanmuse Pro Monthly",
           "subscriptionGroupID" : "21400000",
           "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "21400002",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited exports, PDF/text share, iCloud sync.",
+              "displayName" : "Scanmuse Pro (Weekly)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.akbaralikhasanov.pagewise.pro.weekly",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Scanmuse Pro Weekly",
+          "subscriptionGroupID" : "21400000",
+          "type" : "RecurringSubscription"
         }
       ]
     }

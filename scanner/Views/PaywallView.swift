@@ -18,6 +18,29 @@ struct PaywallView: View {
 	@State private var isPurchasing = false
 	@State private var isRestoring = false
 	@State private var showingErrorAlert = false
+	@State private var selectedPlan: Plan = .weekly
+
+	private enum Plan {
+		case weekly, monthly
+
+		var title: String { self == .weekly ? "Weekly" : "Monthly" }
+		var periodWord: String { self == .weekly ? "week" : "month" }
+		var renewalWord: String { self == .weekly ? "weekly" : "monthly" }
+	}
+
+	private func product(for plan: Plan) -> Product? {
+		plan == .weekly ? store.weeklyProduct : store.monthlyProduct
+	}
+
+	/// The product the subscribe button acts on — the selected plan, or the
+	/// other one if StoreKit only returned a single product.
+	private var selectedProduct: Product? {
+		product(for: selectedPlan) ?? store.weeklyProduct ?? store.monthlyProduct
+	}
+
+	private var effectivePlan: Plan {
+		selectedProduct?.id == StoreManager.monthlyProductID ? .monthly : .weekly
+	}
 
 	private static let benefits: [(icon: String, title: String, subtitle: String)] = [
 		("doc.richtext", "Export as PDF", "Save a searchable, text-selectable PDF of any document."),
@@ -69,6 +92,9 @@ struct PaywallView: View {
 					.cardStyle(cornerRadius: 18, padding: 16)
 					.padding(.horizontal)
 
+					planPicker
+						.padding(.horizontal)
+
 					subscribeButton
 						.padding(.horizontal)
 
@@ -91,7 +117,7 @@ struct PaywallView: View {
 					.font(.subheadline)
 					.disabled(isRestoring || isPurchasing)
 
-					Text("Auto-renews monthly. Cancel anytime in Settings.")
+					Text("Auto-renews \(effectivePlan.renewalWord) until canceled. Cancel anytime in Settings.")
 						.font(.caption2)
 						.foregroundStyle(.tertiary)
 						.multilineTextAlignment(.center)
@@ -114,7 +140,7 @@ struct PaywallView: View {
 				}
 			}
 			.task {
-				if store.monthlyProduct == nil {
+				if store.weeklyProduct == nil && store.monthlyProduct == nil {
 					await store.loadProducts()
 				}
 			}
@@ -130,11 +156,49 @@ struct PaywallView: View {
 	}
 
 	@ViewBuilder
+	private var planPicker: some View {
+		VStack(spacing: 10) {
+			ForEach([Plan.weekly, Plan.monthly], id: \.title) { plan in
+				if let product = product(for: plan) {
+					planRow(plan, product: product)
+				}
+			}
+		}
+	}
+
+	private func planRow(_ plan: Plan, product: Product) -> some View {
+		let isSelected = effectivePlan == plan
+		return Button {
+			selectedPlan = plan
+		} label: {
+			HStack {
+				VStack(alignment: .leading, spacing: 2) {
+					Text(plan.title)
+						.font(.subheadline.bold())
+					Text("\(product.displayPrice) per \(plan.periodWord)")
+						.font(.footnote)
+						.foregroundStyle(.secondary)
+				}
+				Spacer()
+				Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+					.foregroundStyle(isSelected ? Color.accent : Color.secondary)
+			}
+			.padding(14)
+			.background(Color.cardBackground, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+			.overlay(
+				RoundedRectangle(cornerRadius: 14, style: .continuous)
+					.stroke(isSelected ? Color.accent : Color.clear, lineWidth: 2)
+			)
+		}
+		.buttonStyle(.plain)
+	}
+
+	@ViewBuilder
 	private var subscribeButton: some View {
 		Button {
 			Task {
 				isPurchasing = true
-				await store.purchaseMonthly()
+				await store.purchase(selectedProduct)
 				isPurchasing = false
 				if store.lastErrorMessage != nil {
 					showingErrorAlert = true
@@ -146,8 +210,8 @@ struct PaywallView: View {
 				if isPurchasing {
 					ProgressView()
 						.tint(.white)
-				} else if let product = store.monthlyProduct {
-					Text("Subscribe — \(product.displayPrice)/month")
+				} else if let product = selectedProduct {
+					Text("Subscribe — \(product.displayPrice)/\(effectivePlan.periodWord)")
 						.font(.headline)
 				} else if store.isLoadingProducts {
 					ProgressView()
@@ -162,7 +226,7 @@ struct PaywallView: View {
 			.padding(.vertical, 14)
 			.background(Color.accent, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
 		}
-		.disabled(isPurchasing || isRestoring || store.monthlyProduct == nil)
+		.disabled(isPurchasing || isRestoring || selectedProduct == nil)
 	}
 }
 

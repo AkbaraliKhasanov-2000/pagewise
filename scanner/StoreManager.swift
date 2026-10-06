@@ -7,7 +7,7 @@ import Foundation
 import StoreKit
 import os
 
-/// Owns the app's single Pro subscription: loads its StoreKit product,
+/// Owns the app's Pro subscriptions (weekly and monthly, one group): loads their StoreKit products,
 /// tracks whether the user currently holds an active entitlement, and
 /// exposes purchase/restore actions. `AppState.shared.store` is the one
 /// instance the rest of the app reads from.
@@ -19,8 +19,11 @@ import os
 /// main-thread-safe for SwiftUI without constraining construction.
 final class StoreManager: ObservableObject {
 
+	static let weeklyProductID = "com.akbaralikhasanov.pagewise.pro.weekly"
 	static let monthlyProductID = "com.akbaralikhasanov.pagewise.pro.monthly"
+	private static let allProductIDs: Set<String> = [weeklyProductID, monthlyProductID]
 
+	@Published private(set) var weeklyProduct: Product?
 	@Published private(set) var monthlyProduct: Product?
 	@Published private(set) var isSubscribed = false
 	@Published private(set) var isLoadingProducts = false
@@ -45,8 +48,9 @@ final class StoreManager: ObservableObject {
 		isLoadingProducts = true
 		defer { isLoadingProducts = false }
 		do {
-			let products = try await Product.products(for: [Self.monthlyProductID])
-			monthlyProduct = products.first
+			let products = try await Product.products(for: Self.allProductIDs)
+			weeklyProduct = products.first { $0.id == Self.weeklyProductID }
+			monthlyProduct = products.first { $0.id == Self.monthlyProductID }
 		} catch {
 			Logger.app.error("Failed to load StoreKit products: \(error, privacy: .public)")
 			lastErrorMessage = "Couldn't load subscription options. Check your connection and try again."
@@ -62,7 +66,7 @@ final class StoreManager: ObservableObject {
 		var hasActiveSubscription = false
 		for await result in Transaction.currentEntitlements {
 			guard case .verified(let transaction) = result else { continue }
-			if transaction.productID == Self.monthlyProductID && transaction.revocationDate == nil {
+			if Self.allProductIDs.contains(transaction.productID) && transaction.revocationDate == nil {
 				hasActiveSubscription = true
 			}
 		}
@@ -70,8 +74,8 @@ final class StoreManager: ObservableObject {
 	}
 
 	@MainActor
-	func purchaseMonthly() async {
-		guard let product = monthlyProduct else {
+	func purchase(_ product: Product?) async {
+		guard let product else {
 			lastErrorMessage = "Subscription isn't available right now. Please try again shortly."
 			return
 		}
