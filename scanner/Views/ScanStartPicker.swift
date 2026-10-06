@@ -1,6 +1,6 @@
 //
 //  ScanStartPicker.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

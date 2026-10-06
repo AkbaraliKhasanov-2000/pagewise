@@ -1,6 +1,6 @@
 //
 //  PaywallView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI
@@ -35,10 +35,10 @@ struct PaywallView: View {
 							.font(.system(size: 44, weight: .light))
 							.foregroundStyle(Color.accent)
 
-						Text("Pagewise Pro")
+						Text("Scanmuse Pro")
 							.font(.system(.title, design: .rounded, weight: .bold))
 
-						Text("Subscribe to Pagewise Pro to share or export this document.")
+						Text("Subscribe to Scanmuse Pro to share or export this document.")
 							.font(.subheadline)
 							.foregroundStyle(.secondary)
 							.multilineTextAlignment(.center)

@@ -1,6 +1,6 @@
 //
 //  ViewExtensions.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation

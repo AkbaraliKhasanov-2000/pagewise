@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI
@@ -107,7 +107,7 @@ struct HomeView: View {
 				} label: {
 					Image(systemName: "info.circle")
 				}
-				.accessibilityLabel("About Pagewise")
+				.accessibilityLabel("About Scanmuse")
 			}
 
 			ToolbarItem(placement: .navigationBarTrailing) {

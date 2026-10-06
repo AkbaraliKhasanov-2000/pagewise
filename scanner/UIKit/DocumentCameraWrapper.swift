@@ -1,6 +1,6 @@
 //
 //  DocumentCameraWrapper.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation

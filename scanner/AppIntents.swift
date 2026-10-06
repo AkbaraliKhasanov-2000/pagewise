@@ -1,6 +1,6 @@
 //
 //  AppIntents.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation
@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClassicScanIntent: AppIntent {
 	static var title: LocalizedStringResource = "Scan Document"
-	static var description = IntentDescription("Scan a document with Pagewise")
+	static var description = IntentDescription("Scan a document with Scanmuse")
 	static var openAppWhenRun: Bool = true
 
 	@MainActor
@@ -20,14 +20,14 @@ struct ClassicScanIntent: AppIntent {
 }
 
 struct OpenAppIntent: AppIntent {
-	static var title: LocalizedStringResource = "Open Pagewise"
-	static var description = IntentDescription("Run the Pagewise app")
+	static var title: LocalizedStringResource = "Open Scanmuse"
+	static var description = IntentDescription("Run the Scanmuse app")
 	static var openAppWhenRun: Bool = true
 
 	@MainActor
 	func perform() async throws -> some IntentResult {
 		NavigationManager.shared.openApp()
-		return .result(dialog: "Okay, starting Pagewise.")
+		return .result(dialog: "Okay, starting Scanmuse.")
 	}
 }
 

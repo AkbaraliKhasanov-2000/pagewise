@@ -1,6 +1,6 @@
 //
 //  ZoomableScrollView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

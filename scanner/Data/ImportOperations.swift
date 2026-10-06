@@ -1,6 +1,6 @@
 //
 //  ImportOperations.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation

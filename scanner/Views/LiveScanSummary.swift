@@ -1,6 +1,6 @@
 //
 //  LiveScanSummary.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

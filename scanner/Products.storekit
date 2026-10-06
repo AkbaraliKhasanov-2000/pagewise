@@ -61,7 +61,7 @@
     {
       "id" : "21400000",
       "localizations" : [],
-      "name" : "Pagewise Pro",
+      "name" : "Scanmuse Pro",
       "subscriptions" : [
         {
           "adHocOffers" : [],
@@ -74,13 +74,13 @@
           "localizations" : [
             {
               "description" : "Unlimited scans, filters, signatures, and tags.",
-              "displayName" : "Pagewise Pro (Monthly)",
+              "displayName" : "Scanmuse Pro (Monthly)",
               "locale" : "en_US"
             }
           ],
           "productID" : "com.akbaralikhasanov.pagewise.pro.monthly",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Pagewise Pro Monthly",
+          "referenceName" : "Scanmuse Pro Monthly",
           "subscriptionGroupID" : "21400000",
           "type" : "RecurringSubscription"
         }

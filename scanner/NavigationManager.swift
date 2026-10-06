@@ -1,6 +1,6 @@
 //
 //  NavigationManager.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation

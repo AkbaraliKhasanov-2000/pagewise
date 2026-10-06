@@ -1,6 +1,6 @@
 //
 //  SmallGlyphButton.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

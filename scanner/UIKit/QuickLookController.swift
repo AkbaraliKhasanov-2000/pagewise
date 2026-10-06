@@ -1,6 +1,6 @@
 //
 //  QuickLookController.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

@@ -1,6 +1,6 @@
 //
 //  PageScan.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

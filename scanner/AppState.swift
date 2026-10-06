@@ -1,6 +1,6 @@
 //
 //  AppState.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation
@@ -25,7 +25,7 @@ extension ViewState: AppEnum {
 	static var caseDisplayRepresentations: [ViewState: DisplayRepresentation] = [
 		.Home: "Scan List",
 		.Page: "Scan Now",
-		.About: "About Pagewise",
+		.About: "About Scanmuse",
 	]
 }
 

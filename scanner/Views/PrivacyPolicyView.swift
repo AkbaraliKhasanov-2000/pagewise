@@ -1,6 +1,6 @@
 //
 //  PrivacyPolicyView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI
@@ -15,8 +15,8 @@ struct PrivacyPolicyView: View {
 
 	private let sections: [Section] = [
 		Section(
-			title: "What Pagewise stores",
-			body: "Every document you scan or import — its pages, recognized text, tags, and any signature you add — is stored in a private database on your device. Pagewise does not run its own servers and never sees your documents."
+			title: "What Scanmuse stores",
+			body: "Every document you scan or import — its pages, recognized text, tags, and any signature you add — is stored in a private database on your device. Scanmuse does not run its own servers and never sees your documents."
 		),
 		Section(
 			title: "iCloud sync",
@@ -28,11 +28,11 @@ struct PrivacyPolicyView: View {
 		),
 		Section(
 			title: "Subscriptions",
-			body: "Pagewise Pro purchases are handled entirely by Apple through StoreKit. We don't receive or store your payment details — Apple manages billing according to its own privacy policy."
+			body: "Scanmuse Pro purchases are handled entirely by Apple through StoreKit. We don't receive or store your payment details — Apple manages billing according to its own privacy policy."
 		),
 		Section(
 			title: "Analytics & tracking",
-			body: "Pagewise does not include any analytics, advertising, or tracking SDKs, and does not share your data with third parties."
+			body: "Scanmuse does not include any analytics, advertising, or tracking SDKs, and does not share your data with third parties."
 		),
 		Section(
 			title: "Contact",

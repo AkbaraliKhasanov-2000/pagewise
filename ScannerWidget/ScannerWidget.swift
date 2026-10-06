@@ -29,7 +29,7 @@ struct ClassicScanWidget: Widget {
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
 				.widgetURL(URL(string: "pagewise://scan/classic"))
 		}
-		.configurationDisplayName("Pagewise")
+		.configurationDisplayName("Scanmuse")
 		.description("See your scan count and jump straight to a new scan.")
 		.supportedFamilies([.systemSmall, .accessoryCircular])
 	}

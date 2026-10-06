@@ -1,11 +1,11 @@
 //
 //  AppLogoBadge.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI
 
-/// Pagewise's mark: a rounded badge with a folded-corner page cut into one
+/// Scanmuse's mark: a rounded badge with a folded-corner page cut into one
 /// corner, over a blue-to-amber brand gradient. Pops in with a fade + scale
 /// rather than sliding shapes in from off-screen.
 struct AppLogoBadge: View {

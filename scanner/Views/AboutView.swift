@@ -1,6 +1,6 @@
 //
 //  AboutView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI
@@ -16,11 +16,11 @@ struct AboutView: View {
 		VStack(alignment: .leading, spacing: 20) {
 
 			HStack(spacing: 14) {
-				AppLogoBadge(caption: "PW", exactHeight: 64, justAppeared: $justAppeared)
+				AppLogoBadge(caption: "SM", exactHeight: 64, justAppeared: $justAppeared)
 					.frame(width: 64, height: 64)
 
 				VStack(alignment: .leading, spacing: 2) {
-					Text("Pagewise")
+					Text("Scanmuse")
 						.font(.system(.title2, design: .rounded, weight: .bold))
 					Text("Point, scan, done.")
 						.font(.subheadline)
@@ -34,7 +34,7 @@ struct AboutView: View {
 						Image(systemName: "checkmark.seal.fill")
 							.foregroundStyle(Color.accent)
 							.frame(width: 22)
-						Text("Pagewise Pro is active")
+						Text("Scanmuse Pro is active")
 							.foregroundStyle(Color.primary)
 						Spacer()
 					}

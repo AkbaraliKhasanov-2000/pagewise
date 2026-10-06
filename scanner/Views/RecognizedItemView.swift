@@ -1,6 +1,6 @@
 //
 //  RecognizedItemView.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import SwiftUI

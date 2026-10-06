@@ -1,6 +1,6 @@
 //
 //  StoreManager.swift
-//  Pagewise
+//  Scanmuse
 //
 
 import Foundation
